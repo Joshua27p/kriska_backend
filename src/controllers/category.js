@@ -2,7 +2,6 @@ const { Category } = require('../models');
 const createError = require('http-errors');
 
 const getCategories = async (req, res, next) => {
-  const { name } = req.query;
   let category = await Category.find({});
   console.log(category)
   return res.send({ category });
