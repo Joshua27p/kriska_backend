@@ -25,8 +25,8 @@ const CatalogueSchema = new Schema(
       index: true,
       required: true,
     },
-    image: {
-      type: String,
+    images: {
+      type: Array,
     },
     price: {
       type: Number,
