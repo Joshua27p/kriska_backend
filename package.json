@@ -30,6 +30,9 @@
     "@babel/preset-env": "^7.12.13"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
     "cross-env": "^7.0.2",
     "nodemon": "^2.0.2"
   }
