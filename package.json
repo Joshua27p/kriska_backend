@@ -26,7 +26,7 @@
     "uuid": "^8.1.0",
     "@babel/core": "^7.12.13",
     "@babel/node": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-env": "^7.12.13"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
