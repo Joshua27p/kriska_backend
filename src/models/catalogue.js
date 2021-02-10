@@ -1,87 +1,58 @@
 import mongoose, { Schema } from "mongoose";
-import timestamps from "mongoose-timestamp";
+import refIsValid from '../utils/refIsValid';
+import Category from './category';
 
 // build user schema
-export const CatalogueSchema = new Schema(
+const CatalogueSchema = new Schema(
   {
-    email: {
-      type: String,
-      lowercase: true,
-      trim: true,
-      index: true,
-      unique: true,
-      required: true,
-    },
-    username: {
-      type: String,
-      lowercase: true,
-      trim: true,
-      index: true,
-      unique: true,
-      required: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      bcrypt: true,
-    },
     name: {
       type: String,
+      lowercase: true,
       trim: true,
+      index: true,
+      unique: true,
       required: true,
     },
-    bio: {
+    categoryId: {
       type: String,
-      trim: true,
-      default: "",
+      index: true,
+      required: true
     },
-    url: {
+    category: {
       type: String,
+      uppercase: true,
       trim: true,
-      default: "",
+      index: true,
+      required: true,
     },
-    twitter: {
+    image: {
       type: String,
-      trim: true,
-      default: "",
     },
-    background: {
+    price: {
       type: Number,
-      default: 1,
+      required: true,
     },
-    interests: {
-      type: Schema.Types.Mixed,
-      default: [],
-    },
-    preferences: {
-      notifications: {
-        daily: {
-          type: Boolean,
-          default: false,
-        },
-        weekly: {
-          type: Boolean,
-          default: true,
-        },
-        follows: {
-          type: Boolean,
-          default: true,
-        },
-      },
-    },
-    recoveryCode: {
+    description: {
       type: String,
       trim: true,
+    },
+    size: {
+      type: Array,
       default: "",
-    },
-    active: {
-      type: Boolean,
-      default: true,
-    },
-    admin: {
-      type: Boolean,
-      default: false,
     },
   },
-  { collection: "catalogue" }
+  {
+    timestamps: true,
+    collection: "catalogue"
+  }
 );
+
+CatalogueSchema.index({ name: 1, category: 1, categoryId: 1, name: 'text', category: 'text' })
+
+CatalogueSchema.path('categoryId').validate((value, respond) => (
+  refIsValid(value, respond, Category)
+), 'Invailid categoryId')
+
+const Catalogue = mongoose.model('Catalogue', CatalogueSchema)
+
+export default Catalogue
