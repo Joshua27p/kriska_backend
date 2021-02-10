@@ -4,9 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node --exec babel-node src/index.js",
-    "dev": "nodemon --exec babel-node src/index.js",
-    "build" : "babel src/index.js --out-file index-compiled.js"
+    "start": "nodemon --exec babel-node src/index.js",
+    "dev": "nodemon --exec babel-node src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +26,8 @@
     "uuid": "^8.1.0",
     "@babel/core": "^7.12.13",
     "@babel/node": "^7.12.13",
-    "@babel/preset-env": "^7.12.13"
+    "@babel/preset-env": "^7.12.13",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
