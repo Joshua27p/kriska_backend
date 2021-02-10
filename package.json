@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node --exec babel-node src/index.js",
-    "dev": "nodemon --exec babel-node src/index.js"
+    "dev": "nodemon --exec babel-node src/index.js",
+    "build" : "babel src/index.js --out-file index-compiled.js"
   },
   "keywords": [],
   "author": "",
