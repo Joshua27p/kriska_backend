@@ -32,6 +32,9 @@ const CatalogueSchema = new Schema(
       type: Number,
       required: true,
     },
+    price_final: {
+      type: Number,
+    },
     description: {
       type: String,
       trim: true,
