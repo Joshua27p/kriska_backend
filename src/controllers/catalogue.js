@@ -3,13 +3,16 @@ const createError = require('http-errors');
 
 const getCatalogue = async (req, res, next) => {
   try {
-    const { name_contains, limit, page, start } = req.query;
+    const { name_contains, offers, limit, page, start } = req.query;
     const skip = page ? (page-1)*limit : start
     let query = {}
 
     if(name_contains) query['$text'] = {
       $search: name_contains,
       $caseSensitive: false
+    }
+    if(offers == 'true') query['price_final'] = {
+      $gt: 0
     }
     console.log(query)
     let result = null
