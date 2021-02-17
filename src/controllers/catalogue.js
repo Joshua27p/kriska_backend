@@ -3,7 +3,7 @@ const createError = require('http-errors');
 
 const getCatalogue = async (req, res, next) => {
   try {
-    const { name_contains, offers, limit, page, start } = req.query;
+    const { name_contains, offers, limit, page, start, categories } = req.query;
     const skip = page ? (page-1)*limit : start
     let query = {}
 
@@ -13,6 +13,9 @@ const getCatalogue = async (req, res, next) => {
     }
     if(offers == 'true') query['price_final'] = {
       $gt: 0
+    }
+    if(categories) query[categoryId] = {
+      $in: categories.join(',')
     }
     console.log(query)
     let result = null
