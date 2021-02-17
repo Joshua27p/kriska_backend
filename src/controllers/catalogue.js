@@ -14,8 +14,8 @@ const getCatalogue = async (req, res, next) => {
     if(offers == 'true') query['price_final'] = {
       $gt: 0
     }
-    if(categories) query[categoryId] = {
-      $in: categories.join(',')
+    if(categories) query['categoryId'] = {
+      $in: categories.split(',')
     }
     console.log(query)
     let result = null
